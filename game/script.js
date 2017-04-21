@@ -395,7 +395,7 @@ function delete_game() {
 
 //Update total gold on stage completion
 function updateGold() {
-    master.gold += Math.floor(300 * ((Math.pow(1.35,master.currentZone))*master.gGold1)*master.gGold2);
+    master.gold += Math.floor(300 * ((Math.pow(1.50,master.currentZone))*master.gGold1)*master.gGold2);
     dom.gold.innerHTML = NumFix(master.gold);  
 }
 function haxGold() {
