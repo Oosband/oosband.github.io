@@ -8,6 +8,13 @@ Comment code
 Name game
 Prestige
 Old Relic currency, cooldowns
+>V arrows on tabs to indicate if open
+dps display
+
+BALANCE:
+Too much gold, tie it to monster kill hp?
+hp kinda pointless
+enemies need to do more damage
 */
 
 var master = { //global variable array
@@ -281,7 +288,7 @@ window.setInterval(function save_gameAuto() {
 }, 30000);
 function save_gameManual() {
  localStorage['rpginc_save'] = btoa(JSON.stringify(master));
- dom.UpdateInfo.innerHTML = ('Game Saved');  
+ dom.UpdateInfo.innerHTML = ('Game Saved');
 }
 //load
 function load_game() {
@@ -388,7 +395,7 @@ function delete_game() {
 
 //Update total gold on stage completion
 function updateGold() {
-    master.gold += Math.floor(500 * ((Math.pow(2.2,master.currentZone))*master.gGold1)*master.gGold2);
+    master.gold += Math.floor(300 * ((Math.pow(1.35,master.currentZone))*master.gGold1)*master.gGold2);
     dom.gold.innerHTML = NumFix(master.gold);  
 }
 function haxGold() {
@@ -404,7 +411,7 @@ function haxGold() {
 
 //+1 zone calculations
 function updateCurrentZoneHP() {
-    master.monsterHP = Math.floor(300 * Math.pow(1.75,master.currentZone));
+    master.monsterHP = Math.floor(300 * Math.pow(1.35,master.currentZone));
     master.monsterDPS = Math.floor(master.currentZone*1.75);
     master.monsterHPstart = master.monsterHP;
     dom.monsterHP.innerHTML = NumFix(master.monsterHP) + "/ " + NumFix(master.monsterHPstart);
@@ -1005,7 +1012,7 @@ function useConverge() {
     if (master.coolConverge == 0) {
         master.monsterHP -= (master.BowA2+master.BowA1+master.MeleeA1+master.MeleeA3+master.WizardA1+master.WizardA2);
         master.coolConverge = 60;
-        dom.UpdateInfo.innerHTML = ('Converge unleashes ') + (master.BowA2+master.BowA1+master.MeleeA1+master.MeleeA3+master.WizardA1+master.WizardA2) + (' damage!');
+        dom.UpdateInfo.innerHTML = ('Converge unleashes ') + NumFix(master.BowA2+master.BowA1+master.MeleeA1+master.MeleeA3+master.WizardA1+master.WizardA2) + (' damage!');
     }
     else {
       dom.UpdateInfo.innerHTML = ('Converge is not ready yet');
