@@ -15,6 +15,8 @@ BALANCE:
 Too much gold, tie it to monster kill hp?
 hp kinda pointless
 enemies need to do more damage
+LEECH not working???
+gold/upgrade thing out of whack, less gold than upgrade cost earned (1.5 x 2.2)
 */
 
 var master = { //global variable array
@@ -395,7 +397,7 @@ function delete_game() {
 
 //Update total gold on stage completion
 function updateGold() {
-    master.gold += Math.floor(300 * ((Math.pow(1.50,master.currentZone))*master.gGold1)*master.gGold2);
+    master.gold += Math.floor(300 * ((Math.pow(1.75,master.currentZone))*master.gGold1)*master.gGold2);
     dom.gold.innerHTML = NumFix(master.gold);  
 }
 function haxGold() {
@@ -457,12 +459,12 @@ dom.UpdateInfo.innerHTML = ('+1 Shade Level (+Base Damage, +3 HP)');
 };
 }
 function buyMeleeHP() {
-master.meleeHPCost = Math.floor(30 * Math.pow(2.2,master.meleeHPCount));//works out the cost
+master.meleeHPCost = Math.floor(30 * Math.pow(3.3,master.meleeHPCount));//works out the cost
 if(master.gold >= master.meleeHPCost){//checks that the player can afford
 master.meleeHP += 10;//increases the HP
 master.meleeHPCount +=1;
 master.gold -= master.meleeHPCost;//removes the gold      
-master.next_meleeHPCost = Math.floor(30 * Math.pow(2.2,master.meleeHPCount));//works out the cost of the next
+master.next_meleeHPCost = Math.floor(30 * Math.pow(3.3,master.meleeHPCount));//works out the cost of the next
 dom.meleeHPBuy.innerHTML = (('Cost: ') + NumFix(master.next_meleeHPCost));
 calcHPMelee();
 dom.gold.innerHTML = NumFix(master.gold);
@@ -515,12 +517,12 @@ dom.UpdateInfo.innerHTML = ('+1 Shaman Level (+Base Heal, +3 HP)');
 };
 }
 function buyHealerHP() {
-master.healerHPCost = Math.floor(30 * Math.pow(2.2,master.healerHPCount));//works out the cost
+master.healerHPCost = Math.floor(30 * Math.pow(3.3,master.healerHPCount));//works out the cost
 if(master.gold >= master.healerHPCost){//checks that the player can afford
 master.healerHP += 10;//increases the HP
 master.healerHPCount +=1;
 master.gold -= master.healerHPCost;//removes the gold      
-master.next_healerHPCost = Math.floor(30 * Math.pow(2.2,master.healerHPCount));//works out the cost of the next
+master.next_healerHPCost = Math.floor(30 * Math.pow(3.3,master.healerHPCount));//works out the cost of the next
 calcHPHealer();
 dom.healerHPBuy.innerHTML = (('Cost: ') + NumFix(master.next_healerHPCost));
 dom.gold.innerHTML = NumFix(master.gold);
@@ -578,12 +580,12 @@ dom.UpdateInfo.innerHTML = ('+1 Feu Level (+Base Heal, +3 HP)');
 };
 }
 function buyWizardHP() {
-master.wizardHPCost = Math.floor(30 * Math.pow(2.2,master.wizardHPCount));//works out the cost
+master.wizardHPCost = Math.floor(30 * Math.pow(3.3,master.wizardHPCount));//works out the cost
 if(master.gold >= master.wizardHPCost){//checks that the player can afford
 master.wizardHP += 10;//increases the HP
 master.wizardHPCount +=1;
 master.gold -= master.wizardHPCost;//removes the gold      
-master.next_wizardHPCost = Math.floor(30 * Math.pow(2.2,master.wizardHPCount));//works out the cost of the next
+master.next_wizardHPCost = Math.floor(30 * Math.pow(3.3,master.wizardHPCount));//works out the cost of the next
 calcHPwizard();
 dom.wizardHPBuy.innerHTML = (('Cost: ') + NumFix(master.next_wizardHPCost));
 dom.gold.innerHTML = NumFix(master.gold);   
@@ -634,12 +636,12 @@ dom.UpdateInfo.innerHTML = ('+1 Clout Level (+Base Heal, +3 HP)');
 };
 }
 function buySupportHP() {
-master.supportHPCost = Math.floor(30 * Math.pow(2.2,master.supportHPCount));//works out the cost
+master.supportHPCost = Math.floor(30 * Math.pow(3.3,master.supportHPCount));//works out the cost
 if(master.gold >= master.supportHPCost){//checks that the player can afford
 master.supportHP += 10;//increases the HP
 master.supportHPCount +=1;
 master.gold -= master.supportHPCost;//removes the gold      
-master.next_supportHPCost = Math.floor(30 * Math.pow(2.2,master.supportHPCount));//works out the cost of the next
+master.next_supportHPCost = Math.floor(30 * Math.pow(3.3,master.supportHPCount));//works out the cost of the next
 calcHPsupport();
 dom.supportHPBuy.innerHTML = (('Cost: ') + NumFix(master.next_supportHPCost));
 dom.gold.innerHTML = NumFix(master.gold);  
@@ -691,12 +693,12 @@ calcDEEPSbow();//updates dps displays
 dom.UpdateInfo.innerHTML = ('+1 Flux Level (+Base Heal, +3 HP)'); 
 }
 function buyBowHP() {
-master.bowHPCost = Math.floor(50 * Math.pow(2.2,master.bowHPCount));//works out the cost
+master.bowHPCost = Math.floor(50 * Math.pow(3.3,master.bowHPCount));//works out the cost
 if(master.gold >= master.bowHPCost){//checks that the player can afford
 master.bowHP += 10;//increases the HP
 master.bowHPCount +=1;
 master.gold -= master.bowHPCost;//removes the gold      
-master.next_bowHPCost = Math.floor(50 * Math.pow(2.2,master.bowHPCount));//works out the cost of the next
+master.next_bowHPCost = Math.floor(50 * Math.pow(3.3,master.bowHPCount));//works out the cost of the next
 calcHPbow();
 dom.bowHPBuy.innerHTML = (('Cost: ') + NumFix(master.next_bowHPCost));
 dom.gold.innerHTML = NumFix(master.gold); 
