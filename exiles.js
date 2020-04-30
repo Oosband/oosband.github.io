@@ -850,13 +850,13 @@ function recruitGuardian() {
 }
 //---The Singulatiry
 function recruitSingularity() {
-	//if (totalLevel >= 250 && currencyStashTab == 1) {
+	if (totalLevel >= 250 && currencyStashTab == 1) {
 		Singularity.level++;
 		$(".SingularityHide").remove();
 		$(".SingularityBuy").remove();
 		$('.flip').removeClass('hidden');
-	// } else { SnackBar("Requirements not met.");
-	// }
+	} else { SnackBar("Requirements not met.");
+	}
 }
 
 //---Delvin' Melvin
