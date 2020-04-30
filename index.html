@@ -1,0 +1,1263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="An incremental game based on the Path of Exile universe.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Idle Exile</title>
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-blue.min.css">
+    <link rel="stylesheet" href="styles.css">
+  </head><!-- /Head -->
+
+  <!-- Body -->
+  <body>
+    <!-- Side Panel & Header -->
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="demo-header mdl-layout__header mdl-color--blue-grey-900 mdl-color-text--blue-grey-200">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Total <span class="TotalLevel">Levels: 0</span> | Total <span class="TotalDR">Efficiency: x0.0</span></span>
+          <div class="mdl-layout-spacer"></div>
+
+          &nbsp;&nbsp;<div id="loader" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+
+      </header>
+
+      <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="demo-drawer-header">
+          <img src="images/exalted.png" class="demo-avatar">
+          <div class="demo-avatar-dropdown">
+            <span>Idle Exile</span>
+            <div class="mdl-layout-spacer"></div>
+          </div>
+        </header>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+          <a class="mdl-navigation__link" href="javascript:void(0);" onclick="showMain();"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Main</a>
+
+          <a class="mdl-navigation__link" href="javascript:void(0);" onclick="showGuild();"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">face</i>Guild</a>
+
+          <a class="mdl-navigation__link" href="javascript:void(0);" onclick="showFlipping();"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">trending_up</i>Flipping</a>
+
+          <a class="mdl-navigation__link" href="javascript:void(0);" onclick="showDelving();"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">timeline</i>Delving</a>
+
+          <a class="mdl-navigation__link" href="javascript:void(0);" onclick="showCrafting();"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">gesture</i>Crafting</a>
+
+          <div class="mdl-layout-spacer"></div>
+          <a class="mdl-navigation__link" href="javascript:void(0);" onclick="showInfo();"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>Info</a>
+        </nav>
+      </div><!-- /Side Panel & Header -->
+
+      <!-- Main -->
+      <main class="mdl-layout__content mdl-color--blue-grey-200">
+            
+            <!-- Dynamic loading of each page -->
+
+            <!-- Main -->
+
+            <div id="welcomePre">
+                <div class="mdl-grid center-items">
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet cardBG imgBG">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Welcome, Exile</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+            <p>It's the start of a new league in Path of Exile, you decide to create a guild with the sole intention of sharing resources and growing as a team.</p>
+            <p>Recruit Exiles, Delvers, Currency Flippers, and Crafters. Dominate the economy and upgrade your guild members.</p>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="welcome();">
+            Create Guild
+            </button>
+            </div>
+            </div>
+            </div>
+            </div><!-- /Welcome -->
+
+
+            <div id="main" class="hidden">
+
+            <div class="mdl-grid center-items">
+
+            <div id="divSingularity" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG singularity">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">The Singularity</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Beep beep boop.
+            </div>
+            <div class="mdl-card__actions mdl-card--border SingularityBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitSingularity();">Recruit The Singularity</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border SingularityHide">
+            250 Total Levels Required<br>
+            Currency Stash Tab Required
+            </div>
+            </div>
+
+            <div id="divFlipping" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet cardBG imgBG">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Currency Flipping</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <p>Automate buying and selling currency on the trade market.</p>
+            <p>Toggle the slider to sell your currency.</p>
+            </div>
+            </div>
+
+            <div id="divSellCurrency" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG imgBG">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Sell Currency</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div class="flip hidden">
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="ArmourerSellSlider">
+            <input type="checkbox" id="ArmourerSellSlider" class="mdl-switch__input" oninput="slideSell(this,Armourer)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Armourer's Scrap 15:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="BlacksmithSellSlider">
+            <input type="checkbox" id="BlacksmithSellSlider" class="mdl-switch__input" oninput="slideSell(this,Blacksmith)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Blacksmith's Whetstone 10:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="GlassblowerSellSlider">
+            <input type="checkbox" id="GlassblowerSellSlider" class="mdl-switch__input" oninput="slideSell(this,Glassblower)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Glassblower's Bauble 8:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="TransmutationSellSlider">
+            <input type="checkbox" id="TransmutationSellSlider" class="mdl-switch__input" oninput="slideSell(this,Transmutation)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Transmutation 16:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="AugmentationSellSlider">
+            <input type="checkbox" id="AugmentationSellSlider" class="mdl-switch__input" oninput="slideSell(this,Augmentation)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Augmentation 5:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="AlterationSellSlider">
+            <input type="checkbox" id="AlterationSellSlider" class="mdl-switch__input" oninput="slideSell(this,Alteration)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Alteration 5:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="ChanceSellSlider">
+            <input type="checkbox" id="ChanceSellSlider" class="mdl-switch__input" oninput="slideSell(this,Chance)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Chance 9:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="JewellerSellSlider">
+            <input type="checkbox" id="JewellerSellSlider" class="mdl-switch__input" oninput="slideSell(this,Jeweller)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Jeweller's Orb 22:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="ChromaticSellSlider">
+            <input type="checkbox" id="ChromaticSellSlider" class="mdl-switch__input" oninput="slideSell(this,Chromatic)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Chromatic Orb 9:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="RegretSellSlider">
+            <input type="checkbox" id="RegretSellSlider" class="mdl-switch__input" oninput="slideSell(this,Regret)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Regret 4:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="GCPSellSlider">
+            <input type="checkbox" id="GCPSellSlider" class="mdl-switch__input" oninput="slideSell(this,GCP)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Gemcutter's Prism 2:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="BlessedSellSlider">
+            <input type="checkbox" id="BlessedSellSlider" class="mdl-switch__input" oninput="slideSell(this,Blessed)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Blessed Orb 15:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="RegalSellSlider">
+            <input type="checkbox" id="RegalSellSlider" class="mdl-switch__input" oninput="slideSell(this,Regal)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Regal Orb 5:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="StackedDeckSellSlider">
+            <input type="checkbox" id="StackedDeckSellSlider" class="mdl-switch__input" oninput="slideSell(this,StackedDeck)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Stacked Deck 2:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="SilverCoinSellSlider">
+            <input type="checkbox" id="SilverCoinSellSlider" class="mdl-switch__input" oninput="slideSell(this,SilverCoin)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Silver Coin 10:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="ChiselSellSlider">
+            <input type="checkbox" id="ChiselSellSlider" class="mdl-switch__input" oninput="slideSell(this,Chisel)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Cartographer's Chisel 5:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="AlchemySellSlider">
+            <input type="checkbox" id="AlchemySellSlider" class="mdl-switch__input" oninput="slideSell(this,Alchemy)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Alchemy 8:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="ScouringSellSlider">
+            <input type="checkbox" id="ScouringSellSlider" class="mdl-switch__input" oninput="slideSell(this,Scouring)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Scouring 3:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="SimpleSextantSellSlider">
+            <input type="checkbox" id="SimpleSextantSellSlider" class="mdl-switch__input" oninput="slideSell(this,SimpleSextant)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Simple Sextant 2:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="PrimeSextantSellSlider">
+            <input type="checkbox" id="PrimeSextantSellSlider" class="mdl-switch__input" oninput="slideSell(this,PrimeSextant)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Prime Sextant 3:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="AwakenedSextantSellSlider">
+            <input type="checkbox" id="AwakenedSextantSellSlider" class="mdl-switch__input" oninput="slideSell(this,AwakenedSextant)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Awakened Sextant 4:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="FusingSellSlider">
+            <input type="checkbox" id="FusingSellSlider" class="mdl-switch__input" oninput="slideSell(this,Fusing)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Fusing 6:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="VaalSellSlider">
+            <input type="checkbox" id="VaalSellSlider" class="mdl-switch__input" oninput="slideSell(this,Vaal)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Vaal Orb 2:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="AnnulmentSellSlider">
+            <input type="checkbox" id="AnnulmentSellSlider" class="mdl-switch__input" oninput="slideSell(this,Annulment)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Annulment 1:4 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="DivineSellSlider">
+            <input type="checkbox" id="DivineSellSlider" class="mdl-switch__input" oninput="slideSell(this,Divine)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Divine Orb 1:10 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="ExaltedSellSlider">
+            <input type="checkbox" id="ExaltedSellSlider" class="mdl-switch__input" oninput="slideSell(this,Exalted)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Exalted Orb 1:125 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="AwakenerSellSlider">
+            <input type="checkbox" id="AwakenerSellSlider" class="mdl-switch__input" oninput="slideSell(this,Awakener)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Awakener's Orb 1:10 Exalted Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="CrusaderSellSlider">
+            <input type="checkbox" id="CrusaderSellSlider" class="mdl-switch__input" oninput="slideSell(this,Crusader)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Crusader's Exalted Orb 1:10 Exalted Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="HunterSellSlider">
+            <input type="checkbox" id="HunterSellSlider" class="mdl-switch__input" oninput="slideSell(this,Hunter)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Hunter's Exalted Orb 1:10 Exalted Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="RedeemerSellSlider">
+            <input type="checkbox" id="RedeemerSellSlider" class="mdl-switch__input" oninput="slideSell(this,Redeemer)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Redeemer's Exalted Orb 1:10 Exalted Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="WarlordSellSlider">
+            <input type="checkbox" id="WarlordSellSlider" class="mdl-switch__input" oninput="slideSell(this,Warlord)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Warlord's Exalted Orb 1:10 Exalted Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="EternalSellSlider">
+            <input type="checkbox" id="EternalSellSlider" class="mdl-switch__input" oninput="slideSell(this,Eternal)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Eternal Orb 1:25 Exalted Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="MirrorSellSlider">
+            <input type="checkbox" id="MirrorSellSlider" class="mdl-switch__input" oninput="slideSell(this,Mirror)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Mirror of Kalandra 1:200 Exalted Orb</label>
+            </div>
+
+            </div>
+            </div>
+
+            <div id="MainCurrency" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet cardBG imgBG">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Currency</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                Armourer's Scrap: <span class="Armourer">0</span><br>
+                Blacksmith's Whetstone: <span class="Blacksmith">Blacksmith's Whetstone: 0</span><br>
+                Glassblower's Bauble: <span class="Glassblower">0</span><br><br>
+
+                <span id="AscendantHover">Orb of Transmutation:</span> <span class="Transmutation">0</span><br>
+                Orb of Augmentation: <span class="Augmentation">0</span><br>
+                Orb of Alteration: <span class="Alteration">0</span><br>
+                Orb of Chance: <span class="Chance">0</span><br>
+                Jeweller's Orb: <span class="Jeweller">0</span><br>
+                Chromatic Orb: <span class="Chromatic">0</span><br>
+                Orb of Regret: <span class="Regret">0</span><br>
+                Gemcutter's Prism: <span class="GCP">0</span><br>
+                Blessed Orb: <span class="Blessed">0</span><br>
+                Regal Orb: <span class="Regal">0</span><br>
+                Stacked Deck: <span class="StackedDeck">0</span><br>
+                Silver Coin: <span class="SilverCoin">0</span><br><br>
+
+                Cartographer's Chisel: <span class="Chisel">0</span><br>
+                Orb of Alchemy: <span class="Alchemy">0</span><br>
+                Orb of Scouring: <span class="Scouring">0</span><br>
+                Simple Sextant: <span class="SimpleSextant">0</span><br>
+                Prime Sextant: <span class="PrimeSextant">0</span><br>
+                Awakened Sextant: <span class="AwakenedSextant">0</span><br><br>
+
+                Orb of Fusing: <span class="Fusing">0</span><br>
+                Chaos Orb: <span class="Chaos">0</span><br>
+                Vaal Orb: <span class="Vaal">0</span><br>
+                Orb of Annulment: <span class="Annulment">0</span><br>
+                Divine Orb: <span class="Divine">0</span><br>
+                Exalted Orb: <span class="Exalted">0</span><br><br>
+
+                Awakener's Orb: <span class="Awakener">0</span><br>
+                Crusader's Exalted Orb: <span class="Crusader">0</span><br>
+                Hunter's Exalted Orb: <span class="Hunter">0</span><br>
+                Redeemer's Exalted Orb: <span class="Redeemer">0</span><br>
+                Warlord's Exalted Orb: <span class="Warlord">0</span><br>
+                Eternal Orb: <span class="Eternal">0</span><br>
+                Mirror of Kalandra: <span class="Mirror">0</span><br>
+            </div>
+            </div>
+
+            <div id="divBuyCurrency" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG imgBG">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Buy Currency</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div class="flip hidden">
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="ArmourerBuySlider">
+            <input type="checkbox" id="ArmourerBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Armourer)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Armourer's Scrap 13:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="BlacksmithBuySlider">
+            <input type="checkbox" id="BlacksmithBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Blacksmith)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Blacksmith's Whetstone 9:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="GlassblowerBuySlider">
+            <input type="checkbox" id="GlassblowerBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Glassblower)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Glassblower's Bauble 7:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="TransmutationBuySlider">
+            <input type="checkbox" id="TransmutationBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Transmutation)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Transmutation 15:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="AugmentationBuySlider">
+            <input type="checkbox" id="AugmentationBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Augmentation)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Augmentation 4:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="AlterationBuySlider">
+            <input type="checkbox" id="AlterationBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Alteration)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Alteration 4:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="ChanceBuySlider">
+            <input type="checkbox" id="ChanceBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Chance)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Chance 8:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="JewellerBuySlider">
+            <input type="checkbox" id="JewellerBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Jeweller)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Jeweller's Orb 21:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="ChromaticBuySlider">
+            <input type="checkbox" id="ChromaticBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Chromatic)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Chromatic Orb 8:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="RegretBuySlider">
+            <input type="checkbox" id="RegretBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Regret)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Regret 3:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="GCPBuySlider">
+            <input type="checkbox" id="GCPBuySlider" class="mdl-switch__input" oninput="slideBuy(this,GCP)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Gemcutter's Prism 1:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="BlessedBuySlider">
+            <input type="checkbox" id="BlessedBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Blessed)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Blessed Orb 14:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="RegalBuySlider">
+            <input type="checkbox" id="RegalBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Regal)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Regal Orb 4:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="StackedDeckBuySlider">
+            <input type="checkbox" id="StackedDeckBuySlider" class="mdl-switch__input" oninput="slideBuy(this,StackedDeck)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Stacked Deck 1:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="SilverCoinBuySlider">
+            <input type="checkbox" id="SilverCoinBuySlider" class="mdl-switch__input" oninput="slideBuy(this,SilverCoin)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Silver Coin 10:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="ChiselBuySlider">
+            <input type="checkbox" id="ChiselBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Chisel)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Cartographer's Chisel 4:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="AlchemyBuySlider">
+            <input type="checkbox" id="AlchemyBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Alchemy)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Alchemy 7:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="ScouringBuySlider">
+            <input type="checkbox" id="ScouringBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Scouring)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Scouring 2:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="SimpleSextantBuySlider">
+            <input type="checkbox" id="SimpleSextantBuySlider" class="mdl-switch__input" oninput="slideBuy(this,SimpleSextant)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Simple Sextant 1:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="PrimeSextantBuySlider">
+            <input type="checkbox" id="PrimeSextantBuySlider" class="mdl-switch__input" oninput="slideBuy(this,PrimeSextant)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Prime Sextant 2:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="AwakenedSextantBuySlider">
+            <input type="checkbox" id="AwakenedSextantBuySlider" class="mdl-switch__input" oninput="slideBuy(this,AwakenedSextant)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Awakened Sextant 3:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="FusingBuySlider">
+            <input type="checkbox" id="FusingBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Fusing)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Fusing 5:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="VaalBuySlider">
+            <input type="checkbox" id="VaalBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Vaal)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Vaal Orb 2:1 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="AnnulmentBuySlider">
+            <input type="checkbox" id="AnnulmentBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Annulment)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Orb of Annulment 1:3 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="DivineBuySlider">
+            <input type="checkbox" id="DivineBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Divine)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Divine Orb 1:10 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="ExaltedBuySlider">
+            <input type="checkbox" id="ExaltedBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Exalted)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Exalted Orb 1:150 Chaos Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="AwakenerBuySlider">
+            <input type="checkbox" id="AwakenerBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Awakener)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Awakener's Orb 1:20 Exalted Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="CrusaderBuySlider">
+            <input type="checkbox" id="CrusaderBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Crusader)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Crusader's Exalted Orb 1:20 Exalted Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="HunterBuySlider">
+            <input type="checkbox" id="HunterBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Hunter)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Hunter's Exalted Orb 1:20 Exalted Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="RedeemerBuySlider">
+            <input type="checkbox" id="RedeemerBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Redeemer)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Redeemer's Exalted Orb 1:20 Exalted Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="WarlordBuySlider">
+            <input type="checkbox" id="WarlordBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Warlord)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Warlord's Exalted Orb 1:20 Exalted Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="EternalBuySlider">
+            <input type="checkbox" id="EternalBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Eternal)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Eternal Orb 1:50 Exalted Orb</label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="MirrorBuySlider">
+            <input type="checkbox" id="MirrorBuySlider" class="mdl-switch__input" oninput="slideBuy(this,Mirror)">
+            <span class="mdl-switch__label"></span>&nbsp;&nbsp;&nbsp;Mirror of Kalandra 1:250 Exalted Orb</label>
+            </div>
+            </div>
+            </div>
+
+            <div id="divTheorycrafting" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--9-col mdl-cell--9-col-tablet cardBG imgBG">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Theorycrafting (Upgrade Efficiency:&nbsp;x<span class="UpgradeDropRate">0.0</span>)</h2>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="showAllUpgrades();">All</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="showGeneralUpgrades();">General</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="showGearUpgrades();">Gear</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="showLinksUpgrades();">Links</button>
+            </div>
+                <table class="mdl-data-table mdl-js-data-table cardBG">
+                  <thead>
+                    <tr>
+                      <th class="mdl-data-table__cell--non-numeric">Upgrade</th>
+                      <th class="mdl-data-table__cell--non-numeric">Description</th>
+                      <th class="mdl-data-table__cell--non-numeric">Efficiency</th>
+                      <th class="mdl-data-table__cell--non-numeric">Cost</th>
+                    </tr>
+                  </thead>
+                  <tbody id="UpgradeTable">
+                    <tr id="CrusaderUpgrade">
+                        <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyCrusader();">Crusader's Exalted Orb</button></td>
+                        <td class="mdl-data-table__cell--non-numeric">Use Crusader's Exalted Orb</td>
+                        <td class="mdl-data-table__cell--non-numeric">+2</td>
+                        <td class="mdl-data-table__cell--non-numeric">1 Crusader's Exalted Orb</td>
+                    </tr>
+                    <tr id="HunterUpgrade">
+                        <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyHunter();">Hunter's Exalted Orb</button></td>
+                        <td class="mdl-data-table__cell--non-numeric">Use Hunter's Exalted Orb</td>
+                        <td class="mdl-data-table__cell--non-numeric">+2</td>
+                        <td class="mdl-data-table__cell--non-numeric">1 Hunter's Exalted Orb</td>
+                    </tr>
+                    <tr id="RedeemerUpgrade">
+                        <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyRedeemer();">Redeemer's Exalted Orb</button></td>
+                        <td class="mdl-data-table__cell--non-numeric">Use Redeemer's Exalted Orb</td>
+                        <td class="mdl-data-table__cell--non-numeric">+2</td>
+                        <td class="mdl-data-table__cell--non-numeric">1 Redeemer's Exalted Orb</td>
+                    </tr>
+                    <tr id="WarlordUpgrade">
+                        <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyWarlord();">Warlord's Exalted Orb</button></td>
+                        <td class="mdl-data-table__cell--non-numeric">Use Warlord's Exalted Orb</td>
+                        <td class="mdl-data-table__cell--non-numeric">+2</td>
+                        <td class="mdl-data-table__cell--non-numeric">1 Warlord's Exalted Orb</td>
+                    </tr>
+                  </tbody>
+                  <tbody id="UpgradeGearTable">
+                  </tbody>
+                  <tbody id="UpgradeLinksTable">
+                  </tbody>
+                </table>
+            </div>
+
+        </div><!-- /Grid -->
+
+        </div>
+            <!-- /Main -->
+
+            <!-- Guild -->
+            <div id="guild" class="hidden">
+            <div class="mdl-grid center-items">
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG ascendant">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Ascendant</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="AscendantLevel">0</span> <span class="AscendantReroll hidden"></span><br>
+            EXP: <span class="AscendantEXP">0/525</span><br>
+            Efficiency: <span class="AscendantEfficiency">x0</span><br>
+            Links: <span class="AscendantLinks">3L</span><br>
+            </div>
+            <div class="mdl-card__actions mdl-card--border AscendantBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitAscendant();">Recruit Ascendant</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border AscendantHide">
+            A Scion washes up on the beach...
+            </div>
+            <div class="mdl-card__actions mdl-card--border AscendantRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Ascendant);">Reroll Ascendant</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG slayer">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Slayer</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="SlayerLevel">0</span> <span class="SlayerReroll hidden"></span><br>
+            EXP: <span class="SlayerEXP">0/525</span><br>
+            Efficiency: <span class="SlayerEfficiency">x0</span><br>
+            Links: <span class="SlayerLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border SlayerBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitSlayer();">Recruit Slayer</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border SlayerHide">
+            35 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border SlayerRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Slayer);">Reroll Slayer</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG assassin">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Assassin</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="AssassinLevel">0</span> <span class="AssassinReroll hidden"></span><br>
+            EXP: <span class="AssassinEXP">0/525</span><br>
+            Efficiency: <span class="AssassinEfficiency">x0</span><br>
+            Links: <span class="AssassinLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border AssassinBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitAssassin();">Recruit Assassin</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border AssassinHide">
+            65 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border AssassinRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Assassin);">Reroll Assassin</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG juggernaut">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Juggernaut</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="JuggernautLevel">0</span> <span class="JuggernautReroll hidden"></span><br>
+            EXP: <span class="JuggernautEXP">0/525</span><br>
+            Efficiency: <span class="JuggernautEfficiency">x0</span><br>
+            Links: <span class="JuggernautLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border JuggernautBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitJuggernaut();">Recruit Juggernaut</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border JuggernautHide">
+            110 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border JuggernautRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Juggernaut);">Reroll Juggernaut</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG necromancer">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Necromancer</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="NecromancerLevel">0</span> <span class="NecromancerReroll hidden"></span><br>
+            EXP: <span class="NecromancerEXP">0/525</span><br>
+            Efficiency: <span class="NecromancerEfficiency">x0</span><br>
+            Links: <span class="NecromancerLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border NecromancerBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitNecromancer();">Recruit Necromancer</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border NecromancerHide">
+            170 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border NecromancerRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Necromancer);">Reroll Necromancer</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG deadeye">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Deadeye</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="DeadeyeLevel">0</span> <span class="DeadeyeReroll hidden"></span><br>
+            EXP: <span class="DeadeyeEXP">0/525</span><br>
+            Efficiency: <span class="DeadeyeEfficiency">x0</span><br>
+            Links: <span class="DeadeyeLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border DeadeyeBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitDeadeye();">Recruit Deadeye</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border DeadeyeHide">
+            245 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border DeadeyeRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Deadeye);">Reroll Deadeye</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG inquisitor">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Inquisitor</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="InquisitorLevel">0</span> <span class="InquisitorReroll hidden"></span><br>
+            EXP: <span class="InquisitorEXP">0/525</span><br>
+            Efficiency: <span class="InquisitorEfficiency">x0</span><br>
+            Links: <span class="InquisitorLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border InquisitorBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitInquisitor();">Recruit Inquisitor</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border InquisitorHide">
+            335 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border InquisitorRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Inquisitor);">Reroll Inquisitor</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG gladiator">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Gladiator</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="GladiatorLevel">0</span> <span class="GladiatorReroll hidden"></span><br>
+            EXP: <span class="GladiatorEXP">0/525</span><br>
+            Efficiency: <span class="GladiatorEfficiency">x0</span><br>
+            Links: <span class="GladiatorLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border GladiatorBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitGladiator();">Recruit Gladiator</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border GladiatorHide">
+            450 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border GladiatorRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Gladiator);">Reroll Gladiator</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG saboteur">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Saboteur</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="SaboteurLevel">0</span> <span class="SaboteurReroll hidden"></span><br>
+            EXP: <span class="SaboteurEXP">0/525</span><br>
+            Efficiency: <span class="SaboteurEfficiency">x0</span><br>
+            Links: <span class="SaboteurLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border SaboteurBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitSaboteur();">Recruit Saboteur</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border SaboteurHide">
+            580 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border SaboteurRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Saboteur);">Reroll Saboteur</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG berserker">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Berserker</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="BerserkerLevel">0</span> <span class="BerserkerReroll hidden"></span><br>
+            EXP: <span class="BerserkerEXP">0/525</span><br>
+            Efficiency: <span class="BerserkerEfficiency">x0</span><br>
+            Links: <span class="BerserkerLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border BerserkerBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitBerserker();">Recruit Berserker</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border BerserkerHide">
+            725 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border BerserkerRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Berserker);">Reroll Berserker</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG elementalist">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Elementalist</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="ElementalistLevel">0</span> <span class="ElementalistReroll hidden"></span><br>
+            EXP: <span class="ElementalistEXP">0/525</span><br>
+            Efficiency: <span class="ElementalistEfficiency">x0</span><br>
+            Links: <span class="ElementalistLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border ElementalistBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitElementalist();">Recruit Elementalist</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border ElementalistHide">
+            885 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border ElementalistRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Elementalist);">Reroll Elementalist</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG raider">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Raider</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="RaiderLevel">0</span> <span class="RaiderReroll hidden"></span><br>
+            EXP: <span class="RaiderEXP">0/525</span><br>
+            Efficiency: <span class="RaiderEfficiency">x0</span><br>
+            Links: <span class="RaiderLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border RaiderBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitRaider();">Recruit Raider</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border RaiderHide">
+            1060 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border RaiderRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Raider);">Reroll Raider</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG hierophant">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Hierophant</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="HierophantLevel">0</span> <span class="HierophantReroll hidden"></span><br>
+            EXP: <span class="HierophantEXP">0/525</span><br>
+            Efficiency: <span class="HierophantEfficiency">x0</span><br>
+            Links: <span class="HierophantLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border HierophantBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitHierophant();">Recruit Hierophant</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border HierophantHide">
+            1250 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border HierophantRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Hierophant);">Reroll Hierophant</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG champion">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Champion</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="ChampionLevel">0</span> <span class="ChampionReroll hidden"></span><br>
+            EXP: <span class="ChampionEXP">0/525</span><br>
+            Efficiency: <span class="ChampionEfficiency">x0</span><br>
+            Links: <span class="ChampionLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border ChampionBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitChampion();">Recruit Champion</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border ChampionHide">
+            1455 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border ChampionRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Champion);">Reroll Champion</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG trickster">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Trickster</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="TricksterLevel">0</span> <span class="TricksterReroll hidden"></span><br>
+            EXP: <span class="TricksterEXP">0/525</span><br>
+            Efficiency: <span class="TricksterEfficiency">x0</span><br>
+            Links: <span class="TricksterLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border TricksterBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitTrickster();">Recruit Trickster</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border TricksterHide">
+            1675 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border TricksterRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Trickster);">Reroll Trickster</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG chieftain">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Chieftain</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="ChieftainLevel">0</span> <span class="ChieftainReroll hidden"></span><br>
+            EXP: <span class="ChieftainEXP">0/525</span><br>
+            Efficiency: <span class="ChieftainEfficiency">x0</span><br>
+            Links: <span class="ChieftainLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border ChieftainBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitChieftain();">Recruit Chieftain</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border ChieftainHide">
+            1910 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border ChieftainRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Chieftain);">Reroll Chieftain</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG occultist">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Occultist</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="OccultistLevel">0</span> <span class="OccultistReroll hidden"></span><br>
+            EXP: <span class="OccultistEXP">0/525</span><br>
+            Efficiency: <span class="OccultistEfficiency">x0</span><br>
+            Links: <span class="OccultistLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border OccultistBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitOccultist();">Recruit Occultist</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border OccultistHide">
+            2160 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border OccultistRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Occultist);">Reroll Occultist</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG pathfinder">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Pathfinder</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="PathfinderLevel">0</span> <span class="PathfinderReroll hidden"></span><br>
+            EXP: <span class="PathfinderEXP">0/525</span><br>
+            Efficiency: <span class="PathfinderEfficiency">x0</span><br>
+            Links: <span class="PathfinderLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border PathfinderBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitPathfinder();">Recruit Pathfinder</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border PathfinderHide">
+            2425 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border PathfinderRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Pathfinder);">Reroll Pathfinder</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG guardian">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Guardian</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="GuardianLevel">0</span> <span class="GuardianReroll hidden"></span><br>
+            EXP: <span class="GuardianEXP">0/525</span><br>
+            Efficiency: <span class="GuardianEfficiency">x0</span><br>
+            Links: <span class="GuardianLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border GuardianBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitGuardian();">Recruit Guardian</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border GuardianHide">
+            2715 Total Levels Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border GuardianRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Guardian);">Reroll Guardian</button>
+            </div>
+            </div>
+
+
+
+
+            </div>
+            </div>
+            <!-- /Guild -->
+
+            <!-- Delivng -->
+            <div id="delving" class="hidden">
+            <div class="mdl-grid center-items">
+                
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG melvin">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Delvin' Melvin</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            Level: <span class="MelvinLevel">0</span> <span class="MelvinReroll hidden"></span><br>
+            EXP: <span class="MelvinEXP">0/525</span><br>
+            Efficiency: <span class="MelvinEfficiency">x0</span><br>
+            Links: <span class="MelvinLinks">3L</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border MelvinBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitMelvin();">Recruit Melvin</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border MelvinHide">
+            500 Total Levels Required<br>Delve Stash Tab Required
+            </div>
+            <div class="mdl-card__actions mdl-card--border MelvinRerollButton hidden">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="buyReroll(Melvin);">Reroll Melvin</button>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG imgBG">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Deep Delving</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <p>Spend Sulphite to traverse the mines.</p>
+            <p>Collect currency and fossils.</p>
+            <div id="delveLoader" class="mdl-progress mdl-js-progress hidden"></div>
+            <br>
+            Total Sulphite: <span class="Sulphite">0</span><br>
+            Delve Depth: <span class="SulphiteDepth">1</span><br>
+            Sulphite Cost: <span class="SulphiteCost">110</span>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG imgBG">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Resonators & Fossils</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <b>Resonators:</b><br>
+            Primitive: <span class="PrimitiveTotal">0</span><br>
+            Potent: <span class="PotentTotal">0</span><br>
+            Powerful: <span class="PowerfulTotal">0</span><br>
+            Prime: <span class="PrimeTotal">0</span><br><br>
+            <b>Fossils:</b><br>
+            Aberrant: <span class="AberrantTotal">0</span><br>
+            Frigid: <span class="FrigidTotal">0</span><br>
+            Metallic: <span class="MetallicTotal">0</span><br>
+            Scorched: <span class="ScorchedTotal">0</span><br>
+            Pristine: <span class="PristineTotal">0</span><br>
+            Aetheric: <span class="AethericTotal">0</span><br>
+            Bound: <span class="BoundTotal">0</span><br>
+            Corroded: <span class="CorrodedTotal">0</span><br>
+            Dense: <span class="DenseTotal">0</span><br>
+            Enchanted: <span class="EnchantedTotal">0</span><br>
+            Jagged: <span class="JaggedTotal">0</span><br>
+            Lucent: <span class="LucentTotal">0</span><br>
+            Perfect: <span class="PerfectTotal">0</span><br>
+            Prismatic: <span class="PrismaticTotal">0</span><br>
+            Serrated: <span class="SerratedTotal">0</span><br>
+            Shuddering: <span class="ShudderingTotal">0</span><br>
+            Faceted: <span class="FacetedTotal">0</span><br>
+            </div>
+            </div>
+
+            </div>
+            </div>
+            <!-- /Delivng -->
+
+            <!-- Crafting -->
+            <div id="crafting" class="hidden">
+            <div class="mdl-grid center-items">
+                
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG artificer">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">The Artificer</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            The hideout warrior.<br>
+            </div>
+            <div class="mdl-card__actions mdl-card--border ArtificerBuy">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="recruitArtificer();">Recruit The Artificer</button>
+            </div>
+            <div class="mdl-card__actions mdl-card--border ArtificerHide">
+            1000 Total Levels Required<br>
+            Quad Stash Tab Required
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet cardBG imgBG">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Gear Crafting</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <p>Use the resources that the guild farms to produce high valued items.</p>
+            <p>Research a crafting method to unlock it.</p>
+            <p>Crafts are completed (then sold) every 30 seconds.<br>Items are mirrored every 1 minute, the mirror fee increases by 5 Exalted every time.</p>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG craft">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Flask</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div id="flaskLoader" class="mdl-progress mdl-js-progress hidden"></div><br>
+            Crafting Cost:<br>
+            1 Transmutation<br>20 Alteration<br>10 Augmentation<br><br>
+            Sale Price: 10 Chaos<br>
+            Total Crafted: <span class="craftFlaskTotal">0</span>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand craftFlaskCost">
+            <a class="mdl-button mdl-button--raised mdl-button--colored" onclick="buyFlaskCraft();">Research Flask</a><br><br>
+            Research Cost:<br>400 Chaos
+            <br>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG craft">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Enchanted Helmet</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div id="enchantLoader" class="mdl-progress mdl-js-progress hidden"></div><br>
+            Crafting Cost:<br>
+            1 Enchanted Fossil<br>1 Primitive Resonator<br><br>
+            Sale Price: 25 Chaos<br>
+            Total Crafted: <span class="craftEnchantTotal">0</span>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand craftEnchantCost">
+            <a class="mdl-button mdl-button--raised mdl-button--colored" onclick="buyEnchantCraft();">Research Helmet Enchant</a><br><br>
+            Research Cost:<br>1,000 Chaos
+            <br>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG craft">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">21/20% Gem</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div id="gemLoader" class="mdl-progress mdl-js-progress hidden"></div><br>
+            Crafting Cost:<br>
+            20 GCP<br>
+            1 Vaal<br>
+            <br>
+            Sale Price: 40 Chaos<br>
+            Total Crafted: <span class="craftGemTotal">0</span>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand craftGemCost">
+            <a class="mdl-button mdl-button--raised mdl-button--colored" onclick="buyGemCraft();">Research 21/20% Gem</a><br><br>
+            Research Cost:<br>1,600 Chaos
+            <br>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG craft">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">30% Vaal Regalia</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div id="perfectLoader" class="mdl-progress mdl-js-progress hidden"></div><br>
+            Crafting Cost:<br>
+            1 Primitive Resonator<br>
+            1 Perfect Fossil<br>
+            <br>
+            Sale Price: 50 Chaos<br>
+            Total Crafted: <span class="craftPerfectTotal">0</span>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand craftPerfectCost">
+            <a class="mdl-button mdl-button--raised mdl-button--colored" onclick="buyPerfectCraft();">Research 30% Vaal Regalia</a><br><br>
+            Research Cost:<br>2,000 Chaos
+            <br>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG craft">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">-9% Chaos Res Helmet</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div id="chaosLoader" class="mdl-progress mdl-js-progress hidden"></div><br>
+            Crafting Cost:<br>
+            1 Primitive Resonator<br>
+            1 Aberrant Fossil<br>
+            <br>
+            Sale Price: 100 Chaos<br>
+            Total Crafted: <span class="craftChaosTotal">0</span>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand craftChaosCost">
+            <a class="mdl-button mdl-button--raised mdl-button--colored" onclick="buyChaosCraft();">Research Chaos Helmet</a><br><br>
+            Research Cost:<br>4,000 Chaos
+            <br>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG craft">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">-9% Cold Res Helmet</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div id="coldLoader" class="mdl-progress mdl-js-progress hidden"></div><br>
+            Crafting Cost:<br>
+            1 Primitive Resonator<br>
+            1 Frigid Fossil<br>
+            <br>
+            Sale Price: 100 Chaos<br>
+            Total Crafted: <span class="craftColdTotal">0</span>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand craftColdCost">
+            <a class="mdl-button mdl-button--raised mdl-button--colored" onclick="buyColdCraft();">Research Cold Helmet</a><br><br>
+            Research Cost:<br>4,000 Chaos
+            <br>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG craft">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">-9% Lightning Res Helmet</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div id="lightLoader" class="mdl-progress mdl-js-progress hidden"></div><br>
+            Crafting Cost:<br>
+            1 Primitive Resonator<br>
+            1 Metallic Fossil<br>
+            <br>
+            Sale Price: 100 Chaos<br>
+            Total Crafted: <span class="craftLightTotal">0</span>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand craftLightCost">
+            <a class="mdl-button mdl-button--raised mdl-button--colored" onclick="buyLightCraft();">Research Lightning Helmet</a><br><br>
+            Research Cost:<br>4,000 Chaos
+            <br>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG craft">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">-9% Fire Res Helmet</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div id="fireLoader" class="mdl-progress mdl-js-progress hidden"></div><br>
+            Crafting Cost:<br>
+            1 Primitive Resonator<br>
+            1 Scorched Fossil<br>
+            <br>
+            Sale Price: 100 Chaos<br>
+            Total Crafted: <span class="craftFireTotal">0</span>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand craftFireCost">
+            <a class="mdl-button mdl-button--raised mdl-button--colored" onclick="buyFireCraft();">Research Fire Helmet</a><br><br>
+            Research Cost:<br>4,000 Chaos
+            <br>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG craft">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">+2 Gem Wand</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div id="wandLoader" class="mdl-progress mdl-js-progress hidden"></div><br>
+            Crafting Cost:<br>
+            1 Powerful Resonator<br>
+            1 Aetheric Fossil<br>
+            1 Prismatic Fossil<br>
+            1 Faceted Fossil<br>
+            <br>
+            Sale Price: 250 Chaos<br>
+            Total Crafted: <span class="craftWandTotal">0</span>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand craftWandCost">
+            <a class="mdl-button mdl-button--raised mdl-button--colored" onclick="buyWandCraft();">Research +2 Gem Wand</a><br><br>
+            Research Cost:<br>10,000 Chaos
+            <br>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG craft">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">(Mirror) 650pDPS Sword</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div id="mirrorSwordLoader" class="mdl-progress mdl-js-progress hidden"></div><br>
+            Mirror Fee: <span class="mirrorSwordFee">20</span> Exalted<br>
+            Total Mirrored: <span class="mirrorSwordTotal">0</span>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand mirrorSwordCost">
+            <a class="mdl-button mdl-button--raised mdl-button--colored" onclick="buyMirrorSword();">Craft Mirror Sword</a><br><br>
+            Crafting Cost:<br>
+            50 Prime Resonator<br>50 Jagged Fossil<br>50 Serrated Fossil<br>50 Shuddering Fossil<br>50 Corroded Fossil<br>
+            25 Eternal Orbs<br>500 Exalted Orbs
+            <br>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand mirrorSwordStats hidden">
+            Cataclysm Edge<br>
+            Jewelled Foil<br>
+            Quality: 30%<br>
+            [+25% to Global Critical Strike Multiplier]<br>
+            258% increased Physical Damage<br>
+            Adds 27 to 49 Physical Damage<br>
+            27% increased Attack Speed<br>
+            38% increased Critical Strike Chance<br>
+            +38% to Global Critical Strike Multiplier<br>
+            +185 to Accuracy Rating<br>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG craft">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">(Mirror) ES Shield</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div id="mirrorShieldLoader" class="mdl-progress mdl-js-progress hidden"></div><br>
+            Mirror Fee: <span class="mirrorShieldFee">20</span> Exalted<br>
+            Total Mirrored: <span class="mirrorShieldTotal">0</span>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand mirrorShieldCost">
+            <a class="mdl-button mdl-button--raised mdl-button--colored" onclick="buyMirrorShield();">Craft Mirror Shield</a><br><br>
+            Crafting Cost:<br>
+            1 Awakener's Orb<br>1 Hunter's Exalted Orb<br>1 Crusader's Exalted Orb<br>
+            50 Potent Resonator<br>50 Dense Fossil<br>50 Lucent Fossil<br>
+            30 Eternal Orbs<br>600 Exalted Orbs
+            <br>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand mirrorShieldStats hidden">
+            Rune Charm<br>
+            Titanium Spirit Shield<br>
+            Quality: 30%<br>
+            Energy Shield: 420<br>
+            Socketed Gems have 15% reduced Mana Reservation<br>
+            109% increased Critical Strike Chance for Spells<br>
+            +111 to maximum Energy Shield<br>
+            110% increased Energy Shield<br>
+            +20 to maximum Mana<br>
+            Recover 5% of Energy Shield when you Block<br>
+            </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet cardBG craft">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">(Mirror) Explode Chest</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+            <div id="mirrorChestLoader" class="mdl-progress mdl-js-progress hidden"></div><br>
+            Mirror Fee: <span class="mirrorChestFee">20</span> Exalted<br>
+            Total Mirrored: <span class="mirrorChestTotal">0</span>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand mirrorChestCost">
+            <a class="mdl-button mdl-button--raised mdl-button--colored" onclick="buyMirrorChest();">Craft Mirror Explode Chest</a><br><br>
+            Crafting Cost:<br>
+            1 Awakener's Orb<br>1 Hunter's Exalted Orb<br>1 Crusader's Exalted Orb<br>
+            50 Prime Resonator<br>50 Jagged Fossil<br>50 Bound Fossil<br>50 Pristine Fossil<br>50 Serrated Fossil<br>
+            35 Eternal Orbs<br>700 Exalted Orbs
+            <br>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand mirrorChestStats hidden">
+            Morbid Suit<br>
+            Astral Plate<br>
+            [12% to all Elemental Resistances]<br>
+            Socketed Attacks have -15 to Total Mana Cost<br>
+            +129 to maximum Life<br>
+            25% increased Effect of Auras on you<br>
+            You can apply an additional Curse<br>
+            Attacks have +2% to Critical Strike Chance<br>
+            Enemies you Kill Explode, dealing 3% of their Life as Physical Damage<br>
+            </div>
+            </div>
+
+
+            </div>
+            </div>
+            <!-- /Crafting -->
+
+            <!-- Info -->
+            <div id="info" class="hidden">
+                <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet">
+                <p>Idle Exile is an incremental game based within the Path of Exile universe.</p>
+                <p>The goal is to dominate the economy within a league by recruiting players to your guild.</p>
+                <p>This project is not in any way affiliated with Grinding Gear Games or Path of Exile. It's a fan-made web game.</p>
+                <p>Instagram: <a href="https://www.instagram.com/oosuo" target="_blank">@Oosuo</a><br>
+                    Reddit: <a href="https://www.reddit.com/user/Oos-PoE" target="_blank">Oos-PoE</a></p>
+                <p>Created using JavaScript/jQuery, with <a href="https://getmdl.io/" target="_blank">Material Design Lite</a> as a HTML/CSS framework.</p>
+                <br><br>
+                <p>Play Time: <span id="timePlayed">00:00:00</span></p>
+
+
+                </div>
+            </div>
+            <!-- /Info -->
+            <div id="snackBar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__icon">
+            <i class="material-icons">error</i>
+            </div>
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+            </div>
+
+      </main>
+     
+    <!-- Scripts -->
+    <!-- Core -->
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Game Logic -->
+    <script type="text/javascript" src="game.js"></script>
+    <script type="text/javascript" src="exiles.js"></script>
+    <script type="text/javascript" src="currency.js"></script>
+    <script type="text/javascript" src="delve.js"></script>
+    <script type="text/javascript" src="upgrades.js"></script>
+    <script type="text/javascript" src="crafting.js"></script>
+    <!-- Libraries -->
+    <script type="text/javascript" src="numeral.js"></script>
+    <!-- /Scripts -->
+  </body><!-- /Body -->
+</html><!-- Hello :) -->
