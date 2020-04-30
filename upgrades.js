@@ -372,7 +372,7 @@ function rollMapCurrency() {
 }
 
 function consumeMapCurrencyUpgrade() {
-	if (Ascendant.level >= 1) {
+	if (Ascendant.level >= 68) {
 	$("#UpgradeTable").append(
 		'<tr id="consumeMapCurrency">'+
             '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored consumeMapCurrencyButton" onclick="buyMapCurrency();">Alch/Scour Maps</button></td>'+
