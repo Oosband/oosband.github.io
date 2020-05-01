@@ -139,5 +139,42 @@ function SnackBar(input) {
 	}
 }
 
+//---Hover Menu Contrast Fix
+function hoverMenu() {
+    $('.menuHover').hover(
+        function () {
+        $(".material-icons").addClass('mdl-color-text--blue-grey-600');
+        }, function () {
+        $(".material-icons").removeClass('mdl-color-text--blue-grey-600');
+        }
+    );
+}
+
 //----------------------------------Start Functions
 gameStart();
+hoverMenu();
+
+//---File Handling
+// window.setInterval(function saveGame() {
+//    localStorage['goeSaveCurrency'] = btoa(JSON.stringify(Currency));
+//    localStorage['goeSaveExile'] = btoa(JSON.stringify(Exile));
+// }, 30000);
+// function saveGameManual() {
+//    localStorage['goeSaveCurrency'] = btoa(JSON.stringify(Currency));
+//    localStorage['goeSaveExile'] = btoa(JSON.stringify(Exile));
+// }
+
+// function load_game() {
+//     if (!localStorage['goeSave']) return;
+//     var goeSaveCurrency = JSON.parse(atob(localStorage['goeSaveCurrency']));
+//     var goeSaveExiles = JSON.parse(atob(localStorage['goeSaveExiles']));
+//     Currency = goeSaveCurrency;
+//     Exiles = goeSaveExiles;
+// //update all info on screen
+ 
+// }
+
+// function delete_game() {
+//     localStorage.clear();
+//     window.location.reload();
+// }
