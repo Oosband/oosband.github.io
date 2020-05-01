@@ -19,11 +19,11 @@ class Exile {
 
 	lvlExile() {
 	if (this.level > 0 && this.level <= 99) {
-		this.exp += Math.floor((Math.random() * (25 - 15) + 15)+(this.dropRate*5)+(this.level/5));
+		this.exp += Math.floor((Math.random() * (25 - 15) + 15)+(this.dropRate*2)+(this.level/5));
 		while (this.exp > this.expToLevel) {
 			this.expToLevel = Math.floor((this.expToLevel*1.10)); //updates level requirement
 			this.level++;
-			this.dropRate += 0.1;
+			this.dropRate += 0.05;
 		}
 	}
 	}
@@ -134,7 +134,7 @@ class Exile {
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Upgrade '+this.name+' gear to Rare rarity</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+0.5 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.3 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">10 Regal</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -145,12 +145,12 @@ class Exile {
 	} else if (this.gear == 6) { //regal gear to rare
 		if (Regal.total >= 10) {
 			Regal.total -= 10;
-			this.dropRate += 0.5;
+			this.dropRate += 0.3;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Buy upgrades for '+this.name+' gear</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+1.0 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.4 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">30 Chaos</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -161,12 +161,12 @@ class Exile {
 	} else if (this.gear == 7) { //upgrade gear
 		if (Chaos.total >= 30) {
 			Chaos.total -= 30;
-			this.dropRate += 1;
+			this.dropRate += 0.4;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Buy jewels for '+this.name+' gear</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+1.0 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.4 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">50 Chaos</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -176,12 +176,12 @@ class Exile {
 	} else if (this.gear == 8) { //upgrade jewels
 		if (Chaos.total >= 50) {
 			Chaos.total -= 50;
-			this.dropRate += 1;
+			this.dropRate += 0.4;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Blessed implicits for '+this.name+' gear</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+1.0 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.4 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">30 Blessed</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -192,12 +192,12 @@ class Exile {
 	} else if (this.gear == 9) { //bless
 		if (Blessed.total >= 30) {
 			Blessed.total -= 30;
-			this.dropRate += 1;
+			this.dropRate += 0.4;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Buy upgrades for '+this.name+' gear</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+2.0 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.5 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">100 Chaos</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -208,12 +208,12 @@ class Exile {
 	} else if (this.gear == 10) { //upgrade gear
 		if (Chaos.total >= 100) {
 			Chaos.total -= 100;
-			this.dropRate += 2;
+			this.dropRate += 0.5;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Enchant '+this.name+' gloves</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+2.0 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.5 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">150 Chance<br>15 Regret</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -225,12 +225,12 @@ class Exile {
 		if (Regret.total >= 15 && Chance.total >= 150) {
 			Regret.total -= 15;
 			Chance.total -= 150;
-			this.dropRate += 2;
+			this.dropRate += 0.5;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Enchant '+this.name+' boots</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+2.0 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.5 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">400 Chance<br>40 Regret</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -241,12 +241,12 @@ class Exile {
 		if (Regret.total >= 40 && Chance.total >= 400) {
 			Regret.total -= 40;
 			Chance.total -= 400;
-			this.dropRate += 2;
+			this.dropRate += 0.5;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">20% quality '+this.name+' flasks</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+2.0 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.5 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">50 Glassblower</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -258,12 +258,12 @@ class Exile {
 	} else if (this.gear == 13) { //20% flasks
 		if (Glassblower.total >= 50) {
 			Glassblower.total -= 50;
-			this.dropRate += 2;
+			this.dropRate += 0.5;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Anoint '+this.name+' amulet</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+2.5 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.6 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">50 Chaos<br>1 Exalted</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -275,12 +275,12 @@ class Exile {
 		if (Exalted.total >= 1 && Chaos.total >= 50) {
 			Exalted.total -= 1;
 			Chaos.total -= 50;
-			this.dropRate += 2.5;
+			this.dropRate += 0.6;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Buy upgrades for '+this.name+' gear</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+2.5 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.6 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">250 Chaos</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -291,12 +291,12 @@ class Exile {
 	} else if (this.gear == 15) { //gear upgrades
 		if (Chaos.total >= 250) {
 			Chaos.total -= 250;
-			this.dropRate += 2.5;
+			this.dropRate += 0.6;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Buy unique flasks for '+this.name+'</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+3.0 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.7 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">200 Chaos<br>2 Exalted</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -307,12 +307,12 @@ class Exile {
 		if (Exalted.total >= 2 && Chaos.total >= 200) {
 			Exalted.total -= 2;
 			Chaos.total -= 200;
-			this.dropRate += 3;
+			this.dropRate += 0.7;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Divine '+this.name+' gear</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+3.0 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.7 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">10 Divine</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -324,12 +324,12 @@ class Exile {
 	} else if (this.gear == 17) { //divine
 		if (Divine.total >= 10) {
 			Divine.total -= 10;
-			this.dropRate += 3;
+			this.dropRate += 0.7;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Buy upgrades for '+this.name+' gear</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+3.0 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.8 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">3 Exalted</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -340,12 +340,12 @@ class Exile {
 	} else if (this.gear == 18) { //gear upgrades
 		if (Exalted.total >= 3) {
 			Exalted.total -= 3;
-			this.dropRate += 3;
+			this.dropRate += 0.8;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Enchant '+this.name+' helmet</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+3.5 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.9 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">2500 Chance<br>250 Regret</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -357,12 +357,12 @@ class Exile {
 		if (Regret.total >= 250 && Chance.total >= 2500) {
 			Regret.total -= 250;
 			Chance.total -= 2500;
-			this.dropRate += 3.5;
+			this.dropRate += 0.9;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Exalt '+this.name+' gear</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+3.5 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+1.0 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">10 Exalted</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -374,12 +374,12 @@ class Exile {
 	} else if (this.gear == 20) { //ex gear
 		if (Exalted.total >= 10) {
 			Exalted.total -= 10;
-			this.dropRate += 3.5;
+			this.dropRate += 1;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Craft explode chest for '+this.name+'</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+4.0 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+1.5 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">5 Exalted<br>1 Awakener</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -390,12 +390,12 @@ class Exile {
 		if (Exalted.total >= 5 && Awakener.total >= 1) {
 			Exalted.total -= 5;
 			Awakener.total -= 1;
-			this.dropRate += 4;
+			this.dropRate += 1.5;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Buy Watchers Eye for '+this.name+'</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+5.0 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+1.5 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">50 Exalted</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -406,12 +406,12 @@ class Exile {
 	} else if (this.gear == 22) { //watchers eye
 		if (Exalted.total >= 50) {
 			Exalted.total -= 50;
-			this.dropRate += 5;
+			this.dropRate += 1.5;
 			this.gear++;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Buy Headhunter for '+this.name+'</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+5.0 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+2.0 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">150 Exalted</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -421,12 +421,12 @@ class Exile {
 	} else if (this.gear == 23) { //headhunter
 		if (Exalted.total >= 150) {
 			Exalted.total -= 150;
-			this.dropRate += 5;
+			this.dropRate += 2;
 			this.gear += 7; //so that the loop for mirrors works
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Mirror gear for '+this.name+'</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+7.5 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+2.5 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">30 Exalted<br>1 Mirror</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -437,12 +437,12 @@ class Exile {
 		if (Exalted.total >= this.gear && Mirror.total >= 1) {
 			Exalted.total -= this.gear;
 			Mirror.total -= 1;
-			this.dropRate += 7.5;
+			this.dropRate += 2.5;
 			this.gear += 10;
 			$('#'+this.name+'GearUpgrade').html(
 			'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'GearButton" onclick="buyGear('+this.name+');">'+this.name+' Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Mirror gear for '+this.name+'</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+7.5 ('+this.name+')</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+2.5 ('+this.name+')</td>'+
             '<td class="mdl-data-table__cell--non-numeric">'+this.gear+' Exalted<br>1 Mirror</td>'
 			);
 			SnackBar(this.name+" Gear upgraded!");
@@ -480,7 +480,7 @@ class Exile {
 				$('#'+this.name+'LinksUpgrade').html(
 				'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'LinksButton" onclick="buyLinks('+this.name+');">'+this.name+' Links</button></td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">Upgrade '+this.name+' links to 5L</td>'+
-	            '<td class="mdl-data-table__cell--non-numeric">+1.0 ('+this.name+')</td>'+
+	            '<td class="mdl-data-table__cell--non-numeric">+0.6 ('+this.name+')</td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">150 Jeweller<br>150 Fusing</td>'
 				);
 				SnackBar(this.name+" Links upgraded!");
@@ -492,12 +492,12 @@ class Exile {
 			if (Fusing.total >= 150 && Jeweller.total >= 150) {
 				Fusing.total -= 150;
 				Jeweller.total -= 150;
-				this.dropRate += 1;
+				this.dropRate += 0.6;
 				this.links++;
 				$('#'+this.name+'LinksUpgrade').html(
 				'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'LinksButton" onclick="buyLinks('+this.name+');">'+this.name+' Links</button></td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">Upgrade '+this.name+' links to 6L</td>'+
-	            '<td class="mdl-data-table__cell--non-numeric">+2.0 ('+this.name+')</td>'+
+	            '<td class="mdl-data-table__cell--non-numeric">+1.0 ('+this.name+')</td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">1500 Jeweller<br>1500 Fusing</td>'
 				);
 				SnackBar(this.name+" Links upgraded!");
@@ -509,12 +509,12 @@ class Exile {
 			if (Fusing.total >= 1500 && Jeweller.total >= 1500) {
 				Fusing.total -= 1500;
 				Jeweller.total -= 1500;
-				this.dropRate += 2;
+				this.dropRate += 1;
 				this.links++;
 				$('#'+this.name+'LinksUpgrade').html(
 				'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'LinksButton" onclick="buyLinks('+this.name+');">'+this.name+' Links</button></td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">Corrupt '+this.name+' gear to +1 gems</td>'+
-	            '<td class="mdl-data-table__cell--non-numeric">+2.0 ('+this.name+')</td>'+
+	            '<td class="mdl-data-table__cell--non-numeric">+1.5 ('+this.name+')</td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">50 Vaal</td>'
 				);
 				SnackBar(this.name+" Links upgraded!");
@@ -527,12 +527,12 @@ class Exile {
 		} else if (this.links == 4) { //+1 gems
 			if (Vaal.total >= 50) {
 				Vaal.total -= 50;
-				this.dropRate += 2;
+				this.dropRate += 1.5;
 				this.links++;
 				$('#'+this.name+'LinksUpgrade').html(
 				'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'LinksButton" onclick="buyLinks('+this.name+');">'+this.name+' Links</button></td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">20% quality '+this.name+' gems</td>'+
-	            '<td class="mdl-data-table__cell--non-numeric">+2.0 ('+this.name+')</td>'+
+	            '<td class="mdl-data-table__cell--non-numeric">+1.5 ('+this.name+')</td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">120 GCP</td>'
 				);
 				SnackBar(this.name+" Links upgraded!");
@@ -544,12 +544,12 @@ class Exile {
 		} else if (this.links == 5) { //20% gems
 			if (GCP.total >= 120) {
 				GCP.total -= 120;
-				this.dropRate += 2;
+				this.dropRate += 1.5;
 				this.links++;
 				$('#'+this.name+'LinksUpgrade').html(
 				'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'LinksButton" onclick="buyLinks('+this.name+');">'+this.name+' Links</button></td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">Corrupt '+this.name+' gems to +1</td>'+
-	            '<td class="mdl-data-table__cell--non-numeric">+2.0 ('+this.name+')</td>'+
+	            '<td class="mdl-data-table__cell--non-numeric">+1.5 ('+this.name+')</td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">100 Vaal</td>'
 				);
 				SnackBar(this.name+" Links upgraded!");
@@ -561,12 +561,12 @@ class Exile {
 		} else if (this.links == 6) { //+2 gems
 			if (Vaal.total >= 100) {
 				Vaal.total -= 100;
-				this.dropRate += 2;
+				this.dropRate += 1.5;
 				this.links++;
 				$('#'+this.name+'LinksUpgrade').html(
 				'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'LinksButton" onclick="buyLinks('+this.name+');">'+this.name+' Links</button></td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">Double corrupt '+this.name+' gems to +1/23%</td>'+
-	            '<td class="mdl-data-table__cell--non-numeric">+3.0 ('+this.name+')</td>'+
+	            '<td class="mdl-data-table__cell--non-numeric">+2.0 ('+this.name+')</td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">150 Vaal</td>'
 				);
 				SnackBar(this.name+" Links upgraded!");
@@ -577,12 +577,12 @@ class Exile {
 		} else if (this.links == 7) { //+2/23% gems
 			if (Vaal.total >= 150) {
 				Vaal.total -= 150;
-				this.dropRate += 3;
+				this.dropRate += 2;
 				this.links++;
 				$('#'+this.name+'LinksUpgrade').html(
 				'<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored '+this.name+'LinksButton" onclick="buyLinks('+this.name+');">'+this.name+' Links</button></td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">Double corrupt '+this.name+' gear to +4 gems</td>'+
-	            '<td class="mdl-data-table__cell--non-numeric">+5.0 ('+this.name+')</td>'+
+	            '<td class="mdl-data-table__cell--non-numeric">+2.5 ('+this.name+')</td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">200 Vaal</td>'
 				);
 				SnackBar(this.name+" Links upgraded!");
@@ -593,7 +593,7 @@ class Exile {
 		} else if (this.links == 8) { //+5/23% gems
 			if (Vaal.total >= 200) {
 				Vaal.total -= 200;
-				this.dropRate += 5;
+				this.dropRate += 2.5;
 				this.links++;
 				SnackBar(this.name+" Links upgrades completed!");
 				$(".Vaal").removeClass("hover");
