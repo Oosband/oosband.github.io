@@ -19,7 +19,7 @@ class Exile {
 
 	lvlExile() {
 	if (this.level > 0 && this.level <= 99) {
-		this.exp += Math.floor((Math.random() * (25 - 15) + 15)+(this.dropRate*2)+(this.level/5));
+		this.exp += Math.floor((Math.random() * (25 - 15) + 15)+(this.dropRate*3)+(this.level/5));
 		while (this.exp > this.expToLevel) {
 			this.expToLevel = Math.floor((this.expToLevel*1.10)); //updates level requirement
 			this.level++;
