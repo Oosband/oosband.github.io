@@ -30,7 +30,7 @@ var fossilData = [
 Primitive = new Fossil('Primitive','0.0125000','0'),
 Potent = new Fossil('Potent','0.0025000','0'),
 Powerful = new Fossil('Powerful','0.0010000','0'),
-Prime = new Fossil('Prime','0.0002500','0'),
+Prime = new Fossil('Prime','0.0004500','0'),
 Aberrant = new Fossil('Aberrant','0.0025000','0'),
 Frigid = new Fossil('Frigid','0.0025000','0'),
 Metallic = new Fossil('Metallic','0.0025000','0'),
@@ -46,8 +46,8 @@ Lucent = new Fossil('Lucent','0.0005000','0'),
 Perfect = new Fossil('Perfect','0.0005000','0'),
 Prismatic = new Fossil('Prismatic','0.0005000','0'),
 Serrated = new Fossil('Serrated','0.0005000','0'),
-Shuddering = new Fossil('Shuddering','0.0001000','0'),
-Faceted = new Fossil('Faceted','0.0001000','0'),
+Shuddering = new Fossil('Shuddering','0.0003500','0'),
+Faceted = new Fossil('Faceted','0.0003500','0'),
 ];
 
 setInterval (function delveTick() {
