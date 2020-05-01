@@ -23,7 +23,7 @@ class Exile {
 		while (this.exp > this.expToLevel) {
 			this.expToLevel = Math.floor((this.expToLevel*1.10)); //updates level requirement
 			this.level++;
-			this.dropRate += 0.05;
+			this.dropRate += 0.1;
 		}
 	}
 	}
