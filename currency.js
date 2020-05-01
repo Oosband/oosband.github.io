@@ -190,7 +190,7 @@ Crusader = new Currency('Crusader','0.0000002','0','10','0','20','0'),
 Hunter = new Currency('Hunter','0.0000002','0','10','0','20','0'),
 Redeemer = new Currency('Redeemer','0.0000002','0','10','0','20','0'),
 Warlord = new Currency('Warlord','0.0000002','0','10','0','20','0'),
-Sulphite = new Currency('Sulphite','0.0000750','0','0','0','0','0'),
+Sulphite = new Currency('Sulphite','0.0000650','0','0','0','0','0'),
 ];
 
 //---Main
@@ -251,3 +251,28 @@ function slideBuy(value,currency) {
         currency.buySetCurrency(0);
     }
 }
+
+//---Flipping Tab Hover
+function hoverFlipping(name) {
+    $('.'+name+'BuySlider').hover(
+        function () {
+        $("."+name).addClass('hover');
+        }, function () {
+        $("."+name).removeClass('hover');
+        }
+    );
+    $('.'+name+'SellSlider').hover(
+        function () {
+        $("."+name).addClass('hover');
+        }, function () {
+        $("."+name).removeClass('hover');
+        }
+    );
+}
+function updateHoverFlipping() {
+    for (let i = 0; i < currencyData.length; i++) {
+        hoverFlipping(currencyData[i].name);
+    }
+};
+
+updateHoverFlipping();
