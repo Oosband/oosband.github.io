@@ -5,9 +5,13 @@ var delveStashTab = 0;
 var quadStashTab = 0;
 var divStashTab = 0;
 var nikoScarab = 0;
+var iiqDropRate = 1;
 var iiqCost = 10;
+var incDropRate = 1;
 var incubatorCost = 20;
 var mappingCurrencyLevel = 0;
+var flippingSpeed = 1;
+var flippingSpeedCost = 1;
 
 setInterval (function updateTick() { //checks if upgrade conditions are met.
 	currencyTab();
@@ -17,23 +21,40 @@ setInterval (function updateTick() { //checks if upgrade conditions are met.
 	incubatorUpgrade();
 	consumeMapCurrencyUpgrade();
 	divTab();
+	flipSpeed();
 
 	if (Crusader.total >= 1) {
 		$("#CrusaderUpgrade").show();
 		hoverUpgrades("CrusaderUpgrade","Crusader");
 	}
+	if (Crusader.total < 1) {
+			$("#CrusaderUpgrade").hide();
+			$(".Crusader").removeClass("hover");
+		}
 	if (Hunter.total >= 1) {
 		$("#HunterUpgrade").show();
 		hoverUpgrades("HunterUpgrade","Hunter");
 	}
+	if (Hunter.total < 1) {
+				$("#HunterUpgrade").hide();
+				$(".Hunter").removeClass("hover");
+		}
 	if (Redeemer.total >= 1) {
 		$("#RedeemerUpgrade").show();
 		hoverUpgrades("RedeemerUpgrade","Redeemer");
 	}
+	if (Redeemer.total < 1) {
+				$("#RedeemerUpgrade").hide();
+				$(".Redeemer").removeClass("hover");
+		}
 	if (Warlord.total >= 1) {
 		$("#WarlordUpgrade").show();
 		hoverUpgrades("WarlordUpgrade","Warlord");
 	}
+	if (Warlord.total < 1) {
+				$("#WarlordUpgrade").hide();
+				$(".Warlord").removeClass("hover");
+		}
 
 	rollMapCurrency();
 }, 500);
@@ -59,7 +80,7 @@ function currencyTab() {
 			'<tr id="currencyTab">'+
                 '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored currencyTabButton" onclick="buyCurrencyTab();">Currency Stash Tab</button></td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">Purchase the Currency Stash Tab</td>'+
-	            '<td class="mdl-data-table__cell--non-numeric">+2.5</td>'+
+	            '<td class="mdl-data-table__cell--non-numeric">+1.0</td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">5 Stacked Deck</td>'+
             '</tr>'
 		);
@@ -72,7 +93,7 @@ function buyCurrencyTab() {
 	if (StackedDeck.total >= 5) {
 		StackedDeck.total -= 5;
 		currencyStashTab = 1;
-		upgradeDropRate += 2.5;
+		upgradeDropRate += 1;
 		SnackBar("Upgrade purchased!");
 		$(".StackedDeck").removeClass("hover");
 		$('#currencyTab').remove();
@@ -87,7 +108,7 @@ function delveTab() {
 			'<tr id="delveTab">'+
                 '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored delveTabButton" onclick="buyDelveTab();">Delve Stash Tab</button></td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">Purchase the Delve Stash Tab</td>'+
-	            '<td class="mdl-data-table__cell--non-numeric">+2.5</td>'+
+	            '<td class="mdl-data-table__cell--non-numeric">+1.0</td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">50 Stacked Deck<br>10 Orb of Annulment</td>'+
             '</tr>'
 		);
@@ -101,7 +122,7 @@ function buyDelveTab() {
 		StackedDeck.total -= 50;
 		Annulment.total -= 10;
 		delveStashTab = 1;
-		upgradeDropRate += 2.5;
+		upgradeDropRate += 1;
 		SnackBar("Upgrade purchased!");
 		$(".StackedDeck").removeClass("hover");
 		$(".Annulment").removeClass("hover");
@@ -118,7 +139,7 @@ function quadTab() {
 			'<tr id="quadTab">'+
                 '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored quadTabButton" onclick="buyQuadTab();">Quad Stash Tab</button></td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">Purchase the Quad Stash Tab</td>'+
-	            '<td class="mdl-data-table__cell--non-numeric">+2.5</td>'+
+	            '<td class="mdl-data-table__cell--non-numeric">+1.0</td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">1 Eternal Orb</td>'+
             '</tr>'
 		);
@@ -128,11 +149,10 @@ function quadTab() {
 }
 
 function buyQuadTab() {
-	if (Annulment.total >= 20 && StackedDeck.total >= 100) {
-		StackedDeck.total -= 100;
-		Annulment.total -= 20;
+	if (Eternal.total >= 1) {
+		Eternal.total -= 1;
 		quadStashTab = 1;
-		upgradeDropRate += 2.5;
+		upgradeDropRate += 1;
 		SnackBar("Upgrade purchased!");
 		$(".Eternal").removeClass("hover");
 		$('#quadTab').remove();
@@ -147,7 +167,7 @@ function delveScarab() {
 		'<tr id="delveScarab">'+
             '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored nikoScarab" onclick="buyNikoScarab();">Rusted Sulphite Scarab</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Use Sulphite Scarab to increase Sulphite quantity</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+2.5</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+1.0</td>'+
             '<td class="mdl-data-table__cell--non-numeric delveScarabCost">1 Exalted</td>'+
         '</tr>'
 	);
@@ -162,7 +182,7 @@ function buyNikoScarab() {
 			Exalted.total -= 1;
 			nikoScarab++;
 			sulphiteDropRate += 100;
-			upgradeDropRate += 2.5;
+			upgradeDropRate += 1;
 			SnackBar("Upgrade purchased!");
 			document.getElementsByClassName('delveScarabCost')[0].innerHTML = "5 Exalted";
 			document.getElementsByClassName('nikoScarab')[0].innerHTML = "Polished Sulphite Scarab";
@@ -174,7 +194,7 @@ function buyNikoScarab() {
 			Exalted.total -= 5;
 			nikoScarab++;
 			sulphiteDropRate += 100;
-			upgradeDropRate += 2.5;
+			upgradeDropRate += 1;
 			SnackBar("Upgrade purchased!");
 			document.getElementsByClassName('delveScarabCost')[0].innerHTML = "10 Exalted";
 			document.getElementsByClassName('nikoScarab')[0].innerHTML = "Gilded Sulphite Scarab";
@@ -186,7 +206,7 @@ function buyNikoScarab() {
 			Exalted.total -= 10;
 			nikoScarab++;
 			sulphiteDropRate += 100;
-			upgradeDropRate += 2.5;
+			upgradeDropRate += 1;
 			SnackBar("Upgrade purchased!");
 			$(".Exalted").removeClass("hover");
 			$('#delveScarab').remove();
@@ -202,7 +222,7 @@ function divTab() {
 			'<tr id="divTab">'+
                 '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored divTabButton" onclick="buyDivTab();">Divination Stash Tab</button></td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">Consume (1) Stacked Deck<br>(per tick)</td>'+
-	            '<td class="mdl-data-table__cell--non-numeric">+2.5</td>'+
+	            '<td class="mdl-data-table__cell--non-numeric">+1.0</td>'+
 	            '<td class="mdl-data-table__cell--non-numeric">50 Orb of Annulment<br>1 Exalted</td>'+
             '</tr>'
 		);
@@ -216,7 +236,7 @@ function buyDivTab() {
 		Annulment.total -= 50;
 		Exalted.total -= 1;
 		divStashTab = 1;
-		upgradeDropRate += 2.5;
+		upgradeDropRate += 1;
 		SnackBar("Upgrade purchased!");
 		$(".Exalted").removeClass("hover");
 		$(".Annulment").removeClass("hover");
@@ -232,8 +252,8 @@ function iiqUpgrade() {
 		'<tr id="iiqUpgrade">'+
             '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored iiqUpgradeButton" onclick="buyiiqUpgrade();">IIQ Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Buy Increased Item Quantity gear for exiles</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+2.5</td>'+
-            '<td class="mdl-data-table__cell--non-numeric iiqUpgradeCostDisply">'+numeral(iiqCost).format('0,0')+' Chaos</td>'+
+            '<td class="mdl-data-table__cell--non-numeric iiqDropRate">+1.0</td>'+
+            '<td class="mdl-data-table__cell--non-numeric iiqUpgradeCostDisplay">'+numeral(iiqCost).format('0,0')+' Chaos</td>'+
         '</tr>'
 	);
 	hoverUpgrades("iiqUpgrade","Chaos");
@@ -244,11 +264,13 @@ function iiqUpgrade() {
 function buyiiqUpgrade() {
 	if (Chaos.total >= iiqCost) {
 		Chaos.total -= iiqCost;
-		iiqCost = Math.floor(iiqCost*1.5);
-		upgradeDropRate += 2.5;
+		iiqCost = Math.floor(iiqCost*1.4);
+		upgradeDropRate += iiqDropRate;
+		iiqDropRate += 0.1;
 		SnackBar("Upgrade purchased!");
-		document.getElementsByClassName('iiqUpgradeCostDisply')[0].innerHTML = numeral(iiqCost).format('0,0')+' Chaos';
+		document.getElementsByClassName('iiqUpgradeCostDisplay')[0].innerHTML = numeral(iiqCost).format('0,0')+' Chaos';
 		document.getElementsByClassName('UpgradeDropRate')[0].innerHTML = upgradeDropRate.toFixed(1);
+		document.getElementsByClassName('iiqDropRate')[0].innerHTML = iiqDropRate.toFixed(1);
 	} else { SnackBar("Requirements not met.");
 	}
 }
@@ -259,8 +281,8 @@ function incubatorUpgrade() {
 		'<tr id="incubatorUpgrade">'+
             '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored incubatorUpgradeButton" onclick="buyIncubatorUpgrade();">Equip Incubators</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Equip Incubators to exile gear</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+1.5</td>'+
-            '<td class="mdl-data-table__cell--non-numeric incubatorUpgradeCostDisply">'+numeral(incubatorCost).format('0,0')+' Chaos</td>'+
+            '<td class="mdl-data-table__cell--non-numeric incDropRate">+1.0</td>'+
+            '<td class="mdl-data-table__cell--non-numeric incubatorUpgradeCostDisplay">'+numeral(incubatorCost).format('0,0')+' Chaos</td>'+
         '</tr>'
 	);
 	hoverUpgrades("incubatorUpgrade","Chaos");
@@ -271,38 +293,42 @@ function incubatorUpgrade() {
 function buyIncubatorUpgrade() {
 	if (Chaos.total >= incubatorCost) {
 		Chaos.total -= incubatorCost;
-		incubatorCost = Math.floor(incubatorCost*1.3);
-		upgradeDropRate += 1.5;
+		incubatorCost = Math.floor(incubatorCost*1.2);
+		upgradeDropRate += incDropRate;
+		incDropRate += 0.1;
 		SnackBar("Upgrade purchased!");
-		document.getElementsByClassName('incubatorUpgradeCostDisply')[0].innerHTML = numeral(incubatorCost).format('0,0')+' Chaos';
+		document.getElementsByClassName('incubatorUpgradeCostDisplay')[0].innerHTML = numeral(incubatorCost).format('0,0')+' Chaos';
 		document.getElementsByClassName('UpgradeDropRate')[0].innerHTML = upgradeDropRate.toFixed(1);
+		document.getElementsByClassName('incDropRate')[0].innerHTML = incDropRate.toFixed(1);
 	} else { SnackBar("Requirements not met.");
 	}
 }
 
-function iiqUpgrade() {
-	if (Ascendant.level >= 70) {
+function flipSpeed() {
+	if (currencyStashTab >= 1) {
 	$("#UpgradeTable").append(
-		'<tr id="iiqUpgrade">'+
-            '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored iiqUpgradeButton" onclick="buyiiqUpgrade();">IIQ Gear</button></td>'+
-            '<td class="mdl-data-table__cell--non-numeric">Buy Increased Item Quantity gear for exiles</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+2.5</td>'+
-            '<td class="mdl-data-table__cell--non-numeric iiqUpgradeCostDisply">'+numeral(iiqCost).format('0,0')+' Chaos</td>'+
+		'<tr id="flipSpeedUpgrade">'+
+            '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored flipSpeedUpgradeButton" onclick="buyflipSpeed();">Flipping Speed</button></td>'+
+            '<td class="mdl-data-table__cell--non-numeric">Increase the rate The Singularity flips currency</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+0.5</td>'+
+            '<td class="mdl-data-table__cell--non-numeric flipSpeedUpgradeCostDisplay">'+numeral(flippingSpeedCost).format('0,0')+' Eternal</td>'+
         '</tr>'
 	);
-	hoverUpgrades("iiqUpgrade","Chaos");
-	iiqUpgrade = noOp;
+	hoverUpgrades("flipSpeedUpgrade","Eternal");
+	flipSpeed = noOp;
 	}
 }
 
-function buyiiqUpgrade() {
-	if (Chaos.total >= iiqCost) {
-		Chaos.total -= iiqCost;
-		iiqCost = Math.floor(iiqCost*1.5);
-		upgradeDropRate += 2.5;
+function buyflipSpeed() {
+	if (Eternal.total >= flippingSpeedCost) {
+		Eternal.total -= flippingSpeedCost;
+		flippingSpeedCost = Math.floor(flippingSpeedCost*2);
+		flippingSpeed++;
+		upgradeDropRate += 0.5;
 		SnackBar("Upgrade purchased!");
-		document.getElementsByClassName('iiqUpgradeCostDisply')[0].innerHTML = numeral(iiqCost).format('0,0')+' Chaos';
+		document.getElementsByClassName('flipSpeedUpgradeCostDisplay')[0].innerHTML = numeral(flippingSpeedCost).format('0,0')+' Eternal';
 		document.getElementsByClassName('UpgradeDropRate')[0].innerHTML = upgradeDropRate.toFixed(1);
+		document.getElementsByClassName('flipSpeedMulti')[0].innerHTML = flippingSpeed;
 	} else { SnackBar("Requirements not met.");
 	}
 }
@@ -377,7 +403,7 @@ function consumeMapCurrencyUpgrade() {
 		'<tr id="consumeMapCurrency">'+
             '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored consumeMapCurrencyButton" onclick="buyMapCurrency();">Alch/Scour Maps</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric consumeMapCurrenydiv">Consume (2) Alchemy, (1) Scour to increase drop rate from maps<br>(per tick)</td>'+
-            '<td class="mdl-data-table__cell--non-numeric">+2.5</td>'+
+            '<td class="mdl-data-table__cell--non-numeric">+1.5</td>'+
             '<td class="mdl-data-table__cell--non-numeric mapCurrencyCost">1 Exalted</td>'+
         '</tr>'
 	);
@@ -391,7 +417,7 @@ function buyMapCurrency() {
 		if (Exalted.total >= 1) {
 			Exalted.total -= 1;
 			mappingCurrencyLevel++;
-			upgradeDropRate += 2.5;
+			upgradeDropRate += 1.5;
 			SnackBar("Upgrade purchased!");
 			document.getElementsByClassName('mapCurrencyCost')[0].innerHTML = "1 Exalted";
 			document.getElementsByClassName('consumeMapCurrencyButton')[0].innerHTML = "Chisel Maps";
@@ -403,7 +429,7 @@ function buyMapCurrency() {
 		if (Exalted.total >= 1) {
 			Exalted.total -= 1;
 			mappingCurrencyLevel++;
-			upgradeDropRate += 2.5;
+			upgradeDropRate += 1.5;
 			SnackBar("Upgrade purchased!");
 			document.getElementsByClassName('mapCurrencyCost')[0].innerHTML = "2 Exalted";
 			document.getElementsByClassName('consumeMapCurrencyButton')[0].innerHTML = "Simple Sextant Maps";
@@ -415,7 +441,7 @@ function buyMapCurrency() {
 		if (Exalted.total >= 2) {
 			Exalted.total -= 2;
 			mappingCurrencyLevel++;
-			upgradeDropRate += 2.5;
+			upgradeDropRate += 1.5;
 			SnackBar("Upgrade purchased!");
 			document.getElementsByClassName('mapCurrencyCost')[0].innerHTML = "2 Exalted";
 			document.getElementsByClassName('consumeMapCurrencyButton')[0].innerHTML = "Prime Sextant Maps";
@@ -427,7 +453,7 @@ function buyMapCurrency() {
 		if (Exalted.total >= 2) {
 			Exalted.total -= 2;
 			mappingCurrencyLevel++;
-			upgradeDropRate += 2.5;
+			upgradeDropRate += 1.5;
 			SnackBar("Upgrade purchased!");
 			document.getElementsByClassName('mapCurrencyCost')[0].innerHTML = "2 Exalted";
 			document.getElementsByClassName('consumeMapCurrencyButton')[0].innerHTML = "Awakened Sextant Maps";
@@ -439,7 +465,7 @@ function buyMapCurrency() {
 		if (Exalted.total >= 2) {
 			Exalted.total -= 2;
 			mappingCurrencyLevel++;
-			upgradeDropRate += 2.5;
+			upgradeDropRate += 1.5;
 			SnackBar("Upgrade purchased!");
 			document.getElementsByClassName('mapCurrencyCost')[0].innerHTML = "2 Exalted";
 			document.getElementsByClassName('consumeMapCurrencyButton')[0].innerHTML = "Vaal Maps";
@@ -451,7 +477,7 @@ function buyMapCurrency() {
 		if (Exalted.total >= 2) {
 			Exalted.total -= 2;
 			mappingCurrencyLevel++;
-			upgradeDropRate += 2.5;
+			upgradeDropRate += 1.5;
 			SnackBar("Upgrade purchased!");
 			document.getElementsByClassName('mapCurrencyCost')[0].innerHTML = "3 Exalted";
 			document.getElementsByClassName('consumeMapCurrencyButton')[0].innerHTML = "Use Prophecies";
@@ -463,7 +489,7 @@ function buyMapCurrency() {
 		if (Exalted.total >= 3) {
 			Exalted.total -= 3;
 			mappingCurrencyLevel++;
-			upgradeDropRate += 2.5;
+			upgradeDropRate += 1.5;
 			SnackBar("Upgrade purchased!");
 			document.getElementsByClassName('UpgradeDropRate')[0].innerHTML = upgradeDropRate.toFixed(1);
 			$(".Exalted").removeClass("hover");
@@ -476,7 +502,7 @@ function buyMapCurrency() {
 function buyCrusader() {
 	if (Crusader.total >= 1) {
 		Crusader.total -= 1;
-		upgradeDropRate += 2.5;
+		upgradeDropRate += 1;
 		SnackBar("Upgrade purchased!");
 		document.getElementsByClassName('UpgradeDropRate')[0].innerHTML = upgradeDropRate.toFixed(1);
 		if (Crusader.total < 1) {
@@ -489,7 +515,7 @@ function buyCrusader() {
 function buyHunter() {
 	if (Hunter.total >= 1) {
 		Hunter.total -= 1;
-		upgradeDropRate += 2.5;
+		upgradeDropRate += 1;
 		SnackBar("Upgrade purchased!");
 		document.getElementsByClassName('UpgradeDropRate')[0].innerHTML = upgradeDropRate.toFixed(1);
 		if (Hunter.total < 1) {
@@ -502,7 +528,7 @@ function buyHunter() {
 function buyRedeemer() {
 	if (Redeemer.total >= 1) {
 		Redeemer.total -= 1;
-		upgradeDropRate += 2.5;
+		upgradeDropRate += 1;
 		SnackBar("Upgrade purchased!");
 		document.getElementsByClassName('UpgradeDropRate')[0].innerHTML = upgradeDropRate.toFixed(1);
 		if (Redeemer.total < 1) {
@@ -515,7 +541,7 @@ function buyRedeemer() {
 function buyWarlord() {
 	if (Warlord.total >= 1) {
 		Warlord.total -= 1;
-		upgradeDropRate += 2.5;
+		upgradeDropRate += 1;
 		SnackBar("Upgrade purchased!");
 		document.getElementsByClassName('UpgradeDropRate')[0].innerHTML = upgradeDropRate.toFixed(1);
 		if (Warlord.total < 1) {
