@@ -305,7 +305,7 @@ function buyIncubatorUpgrade() {
 }
 
 function flipSpeed() {
-	if (currencyStashTab >= 1) {
+	if (totalLevel >= 1000) {
 	$("#UpgradeTable").append(
 		'<tr id="flipSpeedUpgrade">'+
             '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored flipSpeedUpgradeButton" onclick="buyflipSpeed();">Flipping Speed</button></td>'+
@@ -390,8 +390,8 @@ function rollMapCurrency() {
 		}
 	}
 	if (mappingCurrencyLevel >= 7) { //silver coin
-		if (SilverCoin.total >= 6) {
-			SilverCoin.total -= 6;
+		if (SilverCoin.total >= 4) {
+			SilverCoin.total -= 4;
 			mapCurrency();
 		}
 	}
@@ -481,7 +481,7 @@ function buyMapCurrency() {
 			SnackBar("Upgrade purchased!");
 			document.getElementsByClassName('mapCurrencyCost')[0].innerHTML = "3 Exalted";
 			document.getElementsByClassName('consumeMapCurrencyButton')[0].innerHTML = "Use Prophecies";
-			document.getElementsByClassName('consumeMapCurrenydiv')[0].innerHTML = "Consume (6) Silver Coins to increase drop rate from maps<br>(per tick)";
+			document.getElementsByClassName('consumeMapCurrenydiv')[0].innerHTML = "Consume (4) Silver Coins to increase drop rate from maps<br>(per tick)";
 			document.getElementsByClassName('UpgradeDropRate')[0].innerHTML = upgradeDropRate.toFixed(1);
 		} else { SnackBar("Requirements not met.");
 		} 
