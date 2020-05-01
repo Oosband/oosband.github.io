@@ -51,6 +51,7 @@ class Currency {
 
     sellCurrency() {
         if (Singularity.level >= 1 && this.sellPercent == 1) {
+            for (let i = 0; i < flippingSpeed; i++) {
             if (this.name == "Annulment" && this.total >= 1) { //Annulment
                 this.total -= 1;
                 Chaos.total += 4;
@@ -85,11 +86,13 @@ class Currency {
                 this.total -= this.sellRate;
                 Chaos.total += 1;
             }
+            }
         }
     };
 
     buyCurrency() {
         if (Singularity.level >= 1 & this.buyPercent == 1) {
+                for (let i = 0; i < flippingSpeed; i++) {
                 if (this.name == "Annulment") { //Annulment
                     if (Chaos.total >= 3) {
                     this.total += 1;
@@ -143,6 +146,7 @@ class Currency {
                 } else if (Chaos.total >= 1) { //all others
                         this.total += this.buyRate;
                         Chaos.total -= 1;
+                }
                 }
             }
     };
