@@ -8,7 +8,7 @@ var nikoScarab = 0;
 var iiqDropRate = 1;
 var iiqCost = 10;
 var incDropRate = 1;
-var incubatorCost = 20;
+var incubatorCost = 10;
 var mappingCurrencyLevel = 0;
 var flippingSpeed = 1;
 var flippingSpeedCost = 1;
@@ -253,7 +253,7 @@ function iiqUpgrade() {
             '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored iiqUpgradeButton" onclick="buyiiqUpgrade();">IIQ Gear</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Buy Increased Item Quantity gear for exiles</td>'+
             '<td class="mdl-data-table__cell--non-numeric iiqDropRate">+1.0</td>'+
-            '<td class="mdl-data-table__cell--non-numeric iiqUpgradeCostDisplay">'+numeral(iiqCost).format('0,0')+' Chaos</td>'+
+            '<td class="mdl-data-table__cell--non-numeric iiqUpgradeCostDisplay">+'+numeral(iiqCost).format('0,0')+' Chaos</td>'+
         '</tr>'
 	);
 	hoverUpgrades("iiqUpgrade","Chaos");
@@ -282,7 +282,7 @@ function incubatorUpgrade() {
             '<td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored incubatorUpgradeButton" onclick="buyIncubatorUpgrade();">Equip Incubators</button></td>'+
             '<td class="mdl-data-table__cell--non-numeric">Equip Incubators to exile gear</td>'+
             '<td class="mdl-data-table__cell--non-numeric incDropRate">+1.0</td>'+
-            '<td class="mdl-data-table__cell--non-numeric incubatorUpgradeCostDisplay">'+numeral(incubatorCost).format('0,0')+' Chaos</td>'+
+            '<td class="mdl-data-table__cell--non-numeric incubatorUpgradeCostDisplay">+'+numeral(incubatorCost).format('0,0')+' Chaos</td>'+
         '</tr>'
 	);
 	hoverUpgrades("incubatorUpgrade","Chaos");
