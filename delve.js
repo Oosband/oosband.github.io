@@ -61,7 +61,7 @@ function delve() {
 		Sulphite.total -= sulphiteCost;
 		sulphiteCost = Math.floor((50+sulphiteDepth)*2.2);
 		sulphiteDepth++;
-		Melvin.dropRate += 0.1;
+		Melvin.dropRate += 0.01;
 		delveLoadingProgress = 1;
 		document.getElementsByClassName('Sulphite')[0].innerHTML = numeral(Sulphite.total).format('0,0');
 		document.getElementsByClassName('SulphiteDepth')[0].innerHTML = numeral(sulphiteDepth).format('0,0');
