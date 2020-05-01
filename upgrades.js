@@ -50,7 +50,7 @@ function hoverUpgrades(name,a,b) {
 			$("."+b).removeClass('hover');
 			}
 			);
-	};
+	}
 
 //---Upgrades
 function currencyTab() {
@@ -214,7 +214,7 @@ function divTab() {
 function buyDivTab() {
 	if (Annulment.total >= 50 && Exalted.total >= 1) {
 		Annulment.total -= 50;
-		Exalted.total -= 10;
+		Exalted.total -= 1;
 		divStashTab = 1;
 		upgradeDropRate += 2.5;
 		SnackBar("Upgrade purchased!");
@@ -400,8 +400,8 @@ function buyMapCurrency() {
 		} else { SnackBar("Requirements not met.");
 		} 
 	} else if (mappingCurrencyLevel == 1) {
-		if (Exalted.total >= 2) {
-			Exalted.total -= 2;
+		if (Exalted.total >= 1) {
+			Exalted.total -= 1;
 			mappingCurrencyLevel++;
 			upgradeDropRate += 2.5;
 			SnackBar("Upgrade purchased!");
