@@ -34,4 +34,6 @@ maybe some kinda global leaderboard, would need a server to be able to write to 
 
 more end game upgrades/scaling.
 
+button that turns off all flips.
+
 clean up some functions, I feel like I got sloppy with upgrades/crafting - these functions can be condensed, lots of repitition here.
