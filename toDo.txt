@@ -1,0 +1,37 @@
+Each second (tick) = 1 minute in game. Make it last a whole season. Or have some kinda real prestige system that is meaningful.
+
+save/load feature. Kinda shit with JS/jQuery but maybe React/Angular would be better for saving states.
+
+scale mirror upgrades (gives increased efficiency per)
+
+fix annulment flipping rate, should be even.
+
+make flipping tab better, somehow allow players to only flip one of the higher currencies, or set a floor/cap.
+
+Change IIQ/Incubator upgrades, more expensive to start but price scales less.
+
+Make currency flipping upgrade price increase slower.
+
+upgrade to consume conquerer's orbs automatically.
+
+probably nerf melvin efficiency.
+
+investigate Augs not flipping properly (pretty sure this is just cause high droprate and low 5:1 sell rate tho)
+
+cannot tell how much currency you have on flipping page, either highlight the text red, or show the currency somehow. Prefer the first option due to clutter.
+
+Communicate the map currency upgrades better.
+
+togger to hide/show purchasable upgrades
+
+https://www.reddit.com/r/pathofexile/comments/gbntna/idle_exile_an_incremental_game_based_on_poe/fp8sd7u/ - investigate this comment, I guess sometimes exiles overlevel and break, not sure how that can happen without cheats though, 99->100 exp is huge.
+
+phone support, low priotiry. too much information to display nicely.
+
+forgot to close "<div class="mdl-layout\_\_header-row">", probably why the upgrade tables broke on FireFox. Need to figure out why that's broken on FF if not.
+
+maybe some kinda global leaderboard, would need a server to be able to write to a .txt or DB tho.
+
+more end game upgrades/scaling.
+
+clean up some functions, I feel like I got sloppy with upgrades/crafting - these functions can be condensed, lots of repitition here.
